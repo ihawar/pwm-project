@@ -58,7 +58,7 @@ class Storage:
             return [Password(**password) for password in self.data[name]]
     
     def view_all_apps(self):
-        return [app for app in self.data.keys()]
+        return self.data
 
     def create_password(self, app_name: str, password: Password):
         if self.data.get(app_name) is None:

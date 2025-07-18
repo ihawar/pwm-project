@@ -9,6 +9,8 @@ class CliParser:
         app_parser = self.__subparsers.add_parser(name="app", description="App management")
         app_subparsers = app_parser.add_subparsers(dest="action")
         self.__initialize_app(app_subparsers)
+
+        self.__subparsers.add_parser(name="all", description="View all passwords")\
     
     def __initialize_app(self, app_subparsers):
         add_parser = app_subparsers.add_parser("create", help="Create an app")

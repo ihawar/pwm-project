@@ -1,11 +1,9 @@
 from pwm import errors
 from rich.console import Console
+from rich.table import Table
+from rich import box
 
 def app_cli(args, storage, console:Console):
-    if args.action is None:
-        # TODO: interactive panel
-        print("Here are all apps: {}".format(storage.view_all_apps()))
-    
     if args.action == "create":
         try:
             storage.create_app(args.name)
@@ -34,3 +32,24 @@ def app_cli(args, storage, console:Console):
             print(storage.view_app(args.name))
         except errors.DataDoesNotExists:
             console.print("[ERROR] App does not exists.", justify="center", style="bold red")
+
+
+def view_all_apps(storage) -> Table:
+    data: dict = storage.view_all_apps()
+
+    table = Table(title=" - All Apps - ", 
+                  expand=True, 
+                  title_style="white bold",
+                  box=box.MINIMAL,
+                  border_style="cyan",
+                  header_style="cyan bold")
+
+    table.add_column("Name", justify="left", style="purple")
+    table.add_column("Email", justify="left", no_wrap=True, style="purple")
+    table.add_column("Password", justify="left", no_wrap=True, style="red")
+    for app in data.keys():
+        for password in data[app]:
+            table.add_row(app.capitalize(), password['email'], password['password'])
+        table.add_section()
+    return table
+
