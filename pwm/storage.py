@@ -2,7 +2,7 @@ from dataclasses import dataclass, asdict
 import os
 import json
 
-from errors import DataAlreadyExists, DataDoesNotExists
+from pwm.errors import DataAlreadyExists, DataDoesNotExists
 
 
 @dataclass
@@ -56,6 +56,9 @@ class Storage:
             raise DataDoesNotExists(f"App name {name} does not exists.")
         else:
             return [Password(**password) for password in self.data[name]]
+    
+    def view_all_apps(self):
+        return [app for app in self.data.keys()]
 
     def create_password(self, app_name: str, password: Password):
         if self.data.get(app_name) is None:
