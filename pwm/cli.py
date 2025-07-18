@@ -11,7 +11,7 @@ class CliParser:
         self.__initialize_app(app_subparsers)
     
     def __initialize_app(self, app_subparsers):
-        add_parser = app_subparsers.add_parser("add", help="Add an app")
+        add_parser = app_subparsers.add_parser("create", help="Create an app")
         add_parser.add_argument("name", help="App name")
 
         del_parser = app_subparsers.add_parser("delete", help="Delete an app")
