@@ -1,0 +1,6 @@
+class DataAlreadyExists(BaseException):
+    ...
+
+class DataDoesNotExists(BaseException):
+    ...
+
