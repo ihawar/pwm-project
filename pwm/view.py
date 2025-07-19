@@ -1,5 +1,5 @@
 from pwm import errors
-from pwm.keyboard_input import getch
+from pwm.utils import getch
 from pwm.storage import Password, Storage
 from rich.console import Console
 from rich.table import Table
