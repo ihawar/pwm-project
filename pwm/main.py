@@ -1,6 +1,7 @@
 import argparse
 
 from pwm.cli import CliParser
+from pwm.export import export
 from pwm.storage import  Storage
 from pwm.app import app_cli, view_all_apps
 from rich.console import Console
@@ -35,3 +36,5 @@ def main():
         console.print(view_all_apps(storage), justify="center")
     elif args.command == "view":
         ViewApp(storage, console, args.app_name).view_app()
+    elif args.command == "export":
+        export(console,  storage, data_type=args.type, app_name=args.app)

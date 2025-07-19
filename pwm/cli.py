@@ -14,6 +14,11 @@ class CliParser:
 
         view_parser = self.__subparsers.add_parser(name="view", description="View an app")
         view_parser.add_argument("app_name", help="App name to view")
+
+        export_parser = self.__subparsers.add_parser(name="export", description="Export all data or an app")
+        export_parser.add_argument("--app",  required=False)
+        export_parser.add_argument('type', choices=['txt', 'json'])
+
     
     def __initialize_app(self, app_subparsers):
         add_parser = app_subparsers.add_parser("create", help="Create an app")
