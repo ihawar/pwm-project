@@ -7,6 +7,7 @@ from pwm.app import app_cli, view_all_apps
 from rich.console import Console
 
 from pwm.view import ViewApp
+from pwm.web import view_web
 
 def main():
     # CLI
@@ -38,3 +39,5 @@ def main():
         ViewApp(storage, console, args.app_name).view_app()
     elif args.command == "export":
         export(console,  storage, data_type=args.type, app_name=args.app)
+    elif args.command == "web":
+        view_web(console,  storage, app_name=args.app)

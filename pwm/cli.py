@@ -19,6 +19,9 @@ class CliParser:
         export_parser.add_argument("--app",  required=False)
         export_parser.add_argument('type', choices=['txt', 'json'])
 
+        view_parser = self.__subparsers.add_parser(name="web", description="View all data or an app in web")
+        view_parser.add_argument("--app",  required=False)
+
     
     def __initialize_app(self, app_subparsers):
         add_parser = app_subparsers.add_parser("create", help="Create an app")

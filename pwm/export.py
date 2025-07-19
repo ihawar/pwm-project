@@ -51,7 +51,7 @@ def __export_json(data, file_path):
     
 
 def __export_txt(data: dict, file_path):
-    str_data = '\r\r========== PWM(Password manager) ==========\n'
+    str_data = '\t\t========== PWM(Password manager) ==========\n'
     for app_name, passwords in data.items():
         str_data += f'{app_name.capitalize()}:\n'
         for password in passwords:
