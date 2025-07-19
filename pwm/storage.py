@@ -1,7 +1,8 @@
 from dataclasses import dataclass, asdict
 import os
 import json
-
+import random
+from string import digits
 from pwm.errors import DataAlreadyExists, DataDoesNotExists
 
 
@@ -64,7 +65,7 @@ class Storage:
         if self.data.get(app_name) is None:
             raise DataDoesNotExists(f"App name {app_name} does not exists.")
         else:
-            password._id = len(self.data[app_name]) + 1
+            password._id = int(''.join([random.choice(list(digits)) for _ in range(0, 4)]))
             self.data[app_name].append(asdict(password))
             self.__update_file()
 
@@ -92,3 +93,9 @@ class Storage:
             else:
                 raise DataDoesNotExists(f"Password with id={new_password._id} does not exists in app {app_name}")
     
+    def view_password(self, app_name: str, password_id: int):
+        for password in self.view_app(app_name):
+            if password._id == int(password_id):
+                return password
+        else:
+            raise DataDoesNotExists(f"Password with id={password} does not exists in app {app_name}")

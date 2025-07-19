@@ -5,6 +5,7 @@ from pwm.storage import  Storage
 from pwm.app import app_cli, view_all_apps
 from rich.console import Console
 
+from pwm.view import ViewApp
 
 def main():
     # CLI
@@ -30,6 +31,7 @@ def main():
     
     if args.command == "app":
         app_cli(args, storage, console)
-    if args.command =="all":
+    elif args.command =="all":
         console.print(view_all_apps(storage), justify="center")
-
+    elif args.command == "view":
+        ViewApp(storage, console, args.app_name).view_app()
