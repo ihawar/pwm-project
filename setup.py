@@ -5,7 +5,7 @@ readme_path = Path(__file__).parent / "README.md"
 long_description = readme_path.read_text(encoding="utf-8") if readme_path.exists() else ""
 
 setup(
-    name="pwm",
+    name="pwm-project",
     version="1.0.1",
     description="A terminal password manager.",
     long_description=long_description,

@@ -70,7 +70,7 @@ pwm web            # Launch web viewer in browser
 ## 📦 Installation
 
 ```bash
-pip install pwm
+pip install pwm-project
 ```
 
 or
