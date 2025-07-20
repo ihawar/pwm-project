@@ -1,4 +1,5 @@
 import argparse
+from pathlib import Path
 
 from pwm.cli import CliParser
 from pwm.export import export
@@ -21,9 +22,9 @@ def main():
     cli_parser.initialize()
 
     args = parser.parse_args()
-
+    
     # Storage
-    storage = Storage(path=f"{get_data_path()}\\storage.pwm")
+    storage = Storage(path=Path(get_data_path()) / "storage.pwm")
     storage.create_file()
 
     # console
